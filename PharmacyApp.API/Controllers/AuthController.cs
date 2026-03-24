@@ -45,12 +45,20 @@ namespace PharmaFlow.Controllers
 
  
 
-    [Authorize]
-    [HttpGet("secure")]
-    public IActionResult SecureEndpoint()
-    {
-        return Ok("Authorized access");
-    }
+        [Authorize]
+        [HttpGet("secure")]
+        public IActionResult SecureEndpoint()
+        {
+            return Ok("Authorized access");
+        }
 
-}
+        [Authorize(Roles = "Admin")]
+        [HttpGet("test-admin")]
+        public IActionResult TestAdmin()
+        {
+            return Ok("Admin authorized");
+        }
+
+
+    }
 }
